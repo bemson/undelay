@@ -20,7 +20,7 @@ Read David Baron's excellent explanation and case for patching `window.setTimeou
  - The Undelay! script is a self-executing routine that does not add to the global namespace.
  - Undelay! supports passing additional parameters as callback arguments.
  - The minified version is only 0.5K (gzipped)!
- - Undelay! dispatches and listens to "message" events, wherein the `origin` parameter matches the initial host page location. The exception to this rule is for local files; `origin` is set to "*".
+ - Undelay! dispatches and listens to "message" events, wherein the `origin` parameter matches the host page's protocol and hostname. The exception to this rule is for local files; `origin` is set to "*".
  - Currently, there is no API for disabling Undelay! Instead, simply remove the script from your web page.
 
 
