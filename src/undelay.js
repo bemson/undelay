@@ -38,15 +38,17 @@
 			postIdx++;
 			// if attempting a 0 second delay and passing a string or function...
 			if (delay == 0 && !fncType.search(/^[fs]/)) {
-				// if passed a real function and additonal arguments are passed...
-				if (fncType == 'function' && additionalParameters.length) {
-					// closure the function call to include the extra params
-					functionOrCode = function () {
+				// capture callback, use closure when additional args are given for a function
+				posts[postIdx] =
+					// when given a function and additional arguments...
+					(fncType == 'function' && additionalParameters.length) ?
+					// use closured call to include additional params
+					function () {
 						functionOrCode.apply(window, additionalParameters);
-					};
-				}
-				// capture callback
-				posts[postIdx] = functionOrCode;
+					} :
+					// otherwise, use the function itself
+					functionOrCode
+				;
 				// send post index to own window, via postMessage api
 				_postMessage(postIdx, postMessageOrigin);
 				// return the faux timeout id
