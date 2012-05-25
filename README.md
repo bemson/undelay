@@ -1,27 +1,28 @@
 # undelay! _(Ándale!)_
 by Bemi Faison
 
-version 0.0.2
-(5/25/12)
+version 0.0.3
+(5/26/12)
 
 ## DESCRIPTION
 
-Patch `window.setTimeout` for zero-second delayed callbacks.
+Patches `window.setTimeout` such that zero and one second delayed callbacks execute faster.
 
 Undelay works transparently in any browser environment that supports [window.postMessage](https://developer.mozilla.org/en/DOM/window.postMessage) and [message events](http://help.dottoro.com/ljjqtjsj.php). Just include this script, to improve UI performance and responsiveness in your web applications.
 
-Delays other than zero seconds are routed to the native [window.setTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) method. Undelay also patches [window.clearTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) to work with the numeric timeout identifiers.
+Delays above 1 millisecond are routed to the native [window.setTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) method. Undelay also patches [window.clearTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) to work with the numeric timeout identifiers.
 
 Read David Baron's explanation and case for patching `window.setTimeout`, at [http://dbaron.org/log/20100309-faster-timeouts](http://dbaron.org/log/20100309-faster-timeouts).
 
 
-#### DEVELOPER NOTES
+#### IMPLEMENTATION NOTES
 
- - The undelay script is a self-executing routine that does not add to the global namespace.
- - Undelay supports passing additional parameters as callback arguments.
+ - Undelay is a self-executing routine that does not add to the global namespace.
  - The minified version is only 0.5K (gzipped)!
- - Undelay dispatches and listens to "message" events, wherein the `origin` parameter matches the host page's protocol and hostname. The exception to this rule is for local files; `origin` is set to "*".
- - Currently, there is no API for disabling undelay Instead, simply remove the script from your web page.
+ - Undelay supports passing additional parameters as callback arguments, and does not fork this behavior for Internet Explorer (which doesn't support passing callback arguments).
+ - Accelerated callbacks do not have a default time-delay argument, as with FireFox's native implementation.
+ - Undelay listens to message events, originating from the host page's protocol and domain. The exception to this rule is for local files, wherein the message origin is "*" (i.e., any window). The message data is also validated.
+ - Currently, there is no API for disabling undelay. Instead, simply remove the script from your web page.
 
 
 ## FILES
