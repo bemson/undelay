@@ -1,8 +1,8 @@
 # undelay! _(Ándale!)_
 by Bemi Faison
 
-version 0.0.1
-(5/23/12)
+version 0.0.2
+(5/25/12)
 
 ## DESCRIPTION
 
@@ -12,16 +12,16 @@ Undelay! works transparently in any browser environment that supports [window.po
 
 Delays other than zero seconds are routed to the native [window.setTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) method. Undelay! also patches [window.clearTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) to work with the numeric timeout identifiers.
 
-Read David Baron's excellent explanation and case for patching `window.setTimeout`, at [http://dbaron.org/log/20100309-faster-timeouts](http://dbaron.org/log/20100309-faster-timeouts).
+Read David Baron's explanation and case for patching `window.setTimeout`, at [http://dbaron.org/log/20100309-faster-timeouts](http://dbaron.org/log/20100309-faster-timeouts).
 
 
 #### DEVELOPER NOTES
 
- - The Undelay! script is a self-executing routine that does not add to the global namespace.
+ - The undelay! script is a self-executing routine that does not add to the global namespace.
  - Undelay! supports passing additional parameters as callback arguments.
  - The minified version is only 0.5K (gzipped)!
  - Undelay! dispatches and listens to "message" events, wherein the `origin` parameter matches the host page's protocol and hostname. The exception to this rule is for local files; `origin` is set to "*".
- - Currently, there is no API for disabling Undelay! Instead, simply remove the script from your web page.
+ - Currently, there is no API for disabling undelay! Instead, simply remove the script from your web page.
 
 
 ## FILES
