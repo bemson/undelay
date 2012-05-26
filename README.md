@@ -16,7 +16,7 @@ Delays above one millisecond are handled by the browser's native [window.setTime
 #### IMPLEMENTATION NOTES
 
  - Undelay is a self-executing routine that does not add to the global namespace.
- - The minified version is only 0.5K (gzipped)!
+ - The minified version is only 672 bytes (gzipped)!
  - Undelay supports passing additional parameters as callback arguments, and does not fork this behavior for Internet Explorer (which doesn't support passing callback arguments).
  - Accelerated callbacks do not have a default time-delay argument, as with FireFox's native implementation.
  - Undelay listens to message events, originating from the host page's protocol and domain. The exception to this rule is for local files, wherein the message origin is "*" (i.e., any window). The message data is also validated.
