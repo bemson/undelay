@@ -2,17 +2,15 @@
 by Bemi Faison
 
 version 0.0.3
-(5/26/12)
+(5/25/12)
 
 ## DESCRIPTION
 
-Patches `window.setTimeout` such that zero and one second delayed callbacks execute faster.
+Undelay patches `window.setTimeout` such that zero and one millisecond delayed callbacks execute faster.
 
 Undelay works transparently in any browser environment that supports [window.postMessage](https://developer.mozilla.org/en/DOM/window.postMessage) and [message events](http://help.dottoro.com/ljjqtjsj.php). Just include this script, to improve UI performance and responsiveness in your web applications.
 
-Delays above 1 millisecond are routed to the native [window.setTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) method. Undelay also patches [window.clearTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) to work with the numeric timeout identifiers.
-
-Read David Baron's explanation and case for patching `window.setTimeout`, at [http://dbaron.org/log/20100309-faster-timeouts](http://dbaron.org/log/20100309-faster-timeouts).
+Delays above one millisecond are handled by the browser's native [window.setTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) method. Undelay also patches [window.clearTimeout](https://developer.mozilla.org/en/DOM/window.setTimeout) to work with the numeric timeout identifiers.
 
 
 #### IMPLEMENTATION NOTES
