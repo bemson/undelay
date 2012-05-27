@@ -15,6 +15,7 @@ Undelay works transparently in any browser environment that supports [window.pos
 
 #### IMPLEMENTATION NOTES
 
+ - This is an **experimental** project. Please test and apply with caution!
  - Undelay is a self-executing routine that does not add to the global namespace.
  - The minified version is only 672 bytes (gzipped)!
  - Undelay supports passing additional parameters as callback arguments, and does not fork this behavior for Internet Explorer (which doesn't support passing callback arguments).
